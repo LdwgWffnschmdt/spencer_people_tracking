@@ -52,7 +52,7 @@ def newMessageReceived(positionMeasurementArray):
 
         # Construct DetectedPerson
         detectedPerson = DetectedPerson()
-        detectedPerson.modality = positionMeasurement.name;
+        detectedPerson.modality = modality
         detectedPerson.confidence = positionMeasurement.reliability
         detectedPerson.pose.pose.position = positionMeasurement.pos
 
@@ -86,6 +86,7 @@ detectionId = rospy.get_param("~detection_id_offset", 0)
 detectionIdIncrement = rospy.get_param("~detection_id_increment", 1)
 covScale = rospy.get_param("~cov_scale", 1.0)
 useObjectId = rospy.get_param("~use_object_id", False)
+modality = rospy.get_param("~modality", "leg_detector")
 
 
 # Create publisher and subscriber
